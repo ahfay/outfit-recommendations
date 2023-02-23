@@ -87,7 +87,7 @@ def predik_wajah(gbr):
     with open('assets/'+ket[0]) as f:
         contents = f.read()
     list_hasil = []
-    list_hasil.append(predik_wajah[0])
+    list_hasil.append(pred_wajah[0])
     list_hasil.append(prediksi_outfit[0])
     list_hasil.append(contents)
     list_hasil.append(contoh)
