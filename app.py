@@ -88,7 +88,7 @@ def predik_wajah(gbr):
         contents = f.read()
     list_hasil = []
     list_hasil.append(pred_wajah[0])
-    list_hasil.append(prediksi_outfit[0])
+    list_hasil.append(nama[0])
     list_hasil.append(contents)
     list_hasil.append(contoh)
     return list_hasil 
