@@ -73,16 +73,20 @@ def predik_wajah(gbr):
 
     if pred_wajah == ['Anak Laki-laki']:
         prediksi_outfit(img_1, model_anak_lk)
-        contoh = prediksi_outfit[0] + '-1.jpg'
+        nama = prediksi_outfit[0]
+        contoh = nama + '-1.jpg'
     elif pred_wajah == ['Anak Perempuan']:
         prediksi_outfit(img_1, model_anak_pr)
-        contoh = prediksi_outfit[0] + '-2.jpg'
+        nama = prediksi_outfit[0]
+        contoh = nama + '-2.jpg'
     elif pred_wajah == ['Pria Dewasa']:
         prediksi_outfit(img_1, model_dewasa_lk)
-        contoh = prediksi_outfit[0] + '-1.jpg'
+        nama = prediksi_outfit[0]
+        contoh = nama + '-1.jpg'
     elif pred_wajah == ['Perempuan Dewasa']:
         prediksi_outfit(img_1, model_dewasa_pr)
-        contoh = prediksi_outfit[0] + '-2.jpg'       
+        nama = prediksi_outfit[0]
+        contoh = nama + '-2.jpg'       
     
     with open('assets/'+ket[0]) as f:
         contents = f.read()
