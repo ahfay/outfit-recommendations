@@ -38,8 +38,12 @@ def prediksi_outfit(image, model):
     pred = model.predict(image)
     pred = np.argmax(pred,axis=1)
     pred_outfit = [kamus_outfit[i] for i in pred]
+    ket = [kamus[i] for i in pred]
+    list_ = []
+    list_.append(pred_outfit)
+    list_.append(ket)
 
-    return pred_outfit
+    return list_
 
 
 def predik_wajah(gbr):
@@ -69,22 +73,22 @@ def predik_wajah(gbr):
     y_pred = model_wajah.predict(x_test)
     y_pred = np.argmax(y_pred,axis=1)
     pred_wajah = [kamus_wajah[i] for i in y_pred]
-    ket = [kamus[i] for i in y_pred]
 
-    if pred_wajah == ['Anak Laki-laki']:
-        nama = prediksi_outfit(img_1, model_anak_lk)
+
+    if pred_wajah == ['Anak Perempuan']:
+        nama = prediksi_outfit(img_1, model_anak_pr)
         contoh = nama[0] + '-1.jpg'
-    elif pred_wajah == ['Anak Perempuan']:
+    elif pred_wajah == ['Anak Laki-laki']:
         nama = prediksi_outfit(img_1, model_anak_lk)
         contoh = nama[0]  + '-2.jpg'
     elif pred_wajah == ['Pria Dewasa']:
-        nama = prediksi_outfit(img_1, model_anak_lk)
+        nama = prediksi_outfit(img_1, model_dewasa_lk)
         contoh = nama[0]  + '-1.jpg'
     elif pred_wajah == ['Perempuan Dewasa']:
-        nama = prediksi_outfit(img_1, model_anak_lk)
+        nama = prediksi_outfit(img_1, model_dewasa_pr)
         contoh = nama[0] + '-2.jpg'       
     
-    with open('assets/'+ket[0]) as f:
+    with open('assets/'+nama[1]) as f:
         contents = f.read()
     list_hasil = []
     list_hasil.append(pred_wajah[0])
