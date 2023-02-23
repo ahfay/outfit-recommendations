@@ -1,7 +1,6 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
-import cv2
 from keras.models import load_model
 
 kamus_wajah = {0:'Anak Perempuan',1:'Anak Laki-laki',2:'Pria Dewasa',3:'Perempuan Dewasa'}
@@ -23,24 +22,47 @@ col1, col2, col3 = st.columns(3)
 col2.image(image_ex, caption="Contoh Input Gambar")
 
 def prediksi_outfit(image, model):
-    img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    img = cv2.resize(img,(126,224))/255
-    x_test = []
-    x_test.append(image)
-    x_test = np.array(x_test)
-    pred = model.predict(x_test)
+    # convert to grayscale
+    image = image.convert("L")
+
+    # resize image
+    image = image.resize((126, 224))
+
+    # normalize image
+    image = np.array(image)/255.0
+
+    # add batch dimension
+    image = np.expand_dims(image, axis=0)
+
+    # make prediction
+    pred = model.predict(image)
     pred = np.argmax(pred,axis=1)
     pred_outfit = [kamus_outfit[i] for i in pred]
+
     return pred_outfit
 
 
 def predik_wajah(gbr):
-    img_1 = cv2.imread(gbr)
-    img_1 = cv2.cvtColor(img_1, cv2.COLOR_BGR2RGB)
-    img = cv2.resize(img_1,(126,224))
-    cropped_image = img[0:126, 0:126]
-    cv2.imwrite('assets/crop_face.jpg', cropped_image)
-    cropped_image_resize = cv2.resize(cropped_image,(64,64))/255
+    # load image
+    img_1 = Image.open(gbr)
+
+    # convert color mode from BGR to RGB
+    img_1 = img_1.convert("RGB")
+
+    # resize image
+    img = img_1.resize((126,224))
+
+    # crop image
+    cropped_image = img.crop((0, 0, 126, 126))
+
+    # save cropped image
+    cropped_image.save('assets/crop_face.jpg')
+
+    # resize cropped image
+    cropped_image_resize = cropped_image.resize((64, 64))
+
+    # normalize image
+    cropped_image_resize = np.array(cropped_image_resize)/255.0
     x_test = []
     x_test.append(cropped_image_resize)
     x_test = np.array(x_test)
