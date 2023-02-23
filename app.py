@@ -94,7 +94,7 @@ def predik_wajah(gbr):
     return list_hasil 
 
 file = st.file_uploader('', type=[ "jpg"])
-if file is not False:
+if file is not None:
     proses = predik_wajah(gbr=file)
     wajah = proses[0]
     outfit = proses[1]
