@@ -8,10 +8,10 @@ kamus_outfit = {0:'Outfit Batik',1:'Outfit Bumi',2:'Outfit Kue',3:'Outfit Mamba'
 kamus = {0:'batik.txt',1:'bumi.txt',2:'kue.txt',3:'mamba.txt',4:'wedding.txt'}
 
 model_wajah = load_model('model/face_recognition_0.h5')
-model_anak_lk = load_model('model/model_anak_laki.h5')
-model_anak_pr = load_model('model/model_anak_pr.h5')
-model_dewasa_lk = load_model('model/model_dewasa_laki.h5')
-model_dewasa_pr = load_model('model/model_dewasa_pr.h5')
+model_anak_lk = load_model('model/model_outfit_anak_lk.h5')
+model_anak_pr = load_model('model/model_outfit_anak_pr.h5')
+model_dewasa_lk = load_model('model/model_outfit_dewasa_lk.h5')
+model_dewasa_pr = load_model('model/model_outfit_dewasa_pr.h5')
 
 st.set_page_config(page_title="Rekomendasi Outfit")
 
