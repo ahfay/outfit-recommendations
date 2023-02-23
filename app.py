@@ -104,7 +104,7 @@ if file is not None:
     cola, colb, colc = st.columns(3)
     img_ = Image.open('assets/crop_face.jpg')
     cola.image(img_, caption=wajah)
-    img__ = Image.open(contoh_)
+    img__ = Image.open('assets/'+contoh_)
     colc.image(img__, caption=outfit)
     st.success(caption)
 else:
