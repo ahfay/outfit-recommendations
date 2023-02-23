@@ -40,8 +40,8 @@ def prediksi_outfit(image, model):
     pred_outfit = [kamus_outfit[i] for i in pred]
     ket = [kamus[i] for i in pred]
     list_ = []
-    list_.append(pred_outfit)
-    list_.append(ket)
+    list_.append(pred_outfit[0])
+    list_.append(ket[0])
 
     return list_
 
